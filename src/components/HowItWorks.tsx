@@ -23,7 +23,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="relative py-20 sm:py-28 bg-background overflow-hidden">
+    <section id="how-it-works" className="relative py-20 sm:py-28 bg-background overflow-hidden">
       
       {/* Glow Background */}
       <div className="absolute inset-0 -z-10">

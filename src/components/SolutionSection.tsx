@@ -45,7 +45,7 @@ export function SolutionSection() {
 
             {/* HEADING */}
             <h2 className="text-3xl font-extrabold sm:text-4xl md:text-4xl leading-tight">
-              Monitor Remotely —{" "}
+              Mobile Spying —{" "}
               <span className="text-primary">
                 Without Touching the Device
               </span>

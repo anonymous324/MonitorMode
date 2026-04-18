@@ -16,9 +16,9 @@ import { Footer } from "@/components/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "MonitorRemotely — Remote Phone Monitoring Service" },
+      { title: "MobileSpying — Remote Phone Monitoring Service" },
       { name: "description", content: "Monitor any phone remotely without installing anything. Track calls, messages, social media, GPS location and more. 100% undetectable." },
-      { property: "og:title", content: "MonitorRemotely — Remote Phone Monitoring" },
+      { property: "og:title", content: "MobileSpying — Remote Phone Monitoring" },
       { property: "og:description", content: "Keep an eye on your loved one's phone activities without installing anything. No physical access needed." },
     ],
   }),
