@@ -20,11 +20,11 @@ const features = [
 ];
 
 const liveData = [
-  "WhatsApp Messages",
-  "Instagram DMs",
-  "Call Logs",
-  "GPS Location",
-  "Snapchat Stories",
+  { label: "WhatsApp Messages", stat: "1.2k", unit: "delivered" },
+  { label: "Instagram DMs", stat: "84", unit: "intercepted" },
+  { label: "Call Logs", stat: "12", unit: "incoming" },
+  { label: "GPS Location", stat: "Active", unit: "tracking" },
+  { label: "Snapchat Stories", stat: "Live", unit: "captured" },
 ];
 
 export function SolutionSection() {
@@ -92,18 +92,18 @@ export function SolutionSection() {
               <div className="space-y-4 mt-2">
                 {liveData.map((item) => (
                   <div
-                    key={item}
+                    key={item.label}
                     className="flex items-center justify-between rounded-lg bg-black/30 px-4 py-3 border border-white/5"
                   >
                     <div className="flex items-center gap-3">
                       <span className="h-2 w-2 rounded-full bg-green-400"></span>
                       <span className="text-sm text-white font-medium">
-                        {item}
+                        {item.label}
                       </span>
                     </div>
 
-                    <span className="text-xs text-green-400 font-semibold">
-                      Monitoring
+                    <span className="text-xs text-green-400 font-bold">
+                      {item.stat} {item.unit}
                     </span>
                   </div>
                 ))}
