@@ -16695,7 +16695,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-By5MbF9k.js");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-C81df7jW.js");
   const startManifest = tsrStartManifest();
   const rootRoute = startManifest.routes[rootRouteId] = startManifest.routes[rootRouteId] || {};
   rootRoute.assets = rootRoute.assets || [];
@@ -17297,7 +17297,7 @@ var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-CaCRoRgd.js"),
+    import("./router-HgajtSHR.js"),
     import("./start-HYkvq4Ni.js"),
     import("./__23tanstack-start-plugin-adapters-Cwee5PKy.js")
   ]);
@@ -17618,7 +17618,7 @@ function createServerEntry(entry) {
 var server_default = createServerEntry({ fetch });
 const workerEntry = server_default ?? {};
 export {
-  createServerEntry as $,
+  React$1 as $,
   interpolatePath as A,
   nullReplaceEqualDeep as B,
   replaceEqualDeep as C,
@@ -17645,9 +17645,10 @@ export {
   getAssetCrossOrigin as X,
   resolveManifestAssetLink as Y,
   Outlet as Z,
-  React$1 as _,
+  requireReact as _,
   arraysEqual as a,
-  workerEntry as a0,
+  createServerEntry as a0,
+  workerEntry as a1,
   isRedirect as b,
   createLRUCache as c,
   isNotFound as d,

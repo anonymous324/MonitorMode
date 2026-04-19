@@ -1,9 +1,68 @@
-import { r as reactExports, T as jsxRuntimeExports, _ as React, S as React$1 } from "./worker-entry-DCyJHnhR.js";
-import "./router-CaCRoRgd.js";
+import { _ as requireReact, r as reactExports, T as jsxRuntimeExports, $ as React, S as React$1 } from "./worker-entry-C3M6lCaM.js";
+import "./router-HgajtSHR.js";
 import "node:events";
 import "node:async_hooks";
 import "node:stream/web";
 import "node:stream";
+var shim = { exports: {} };
+var useSyncExternalStoreShim_production = {};
+var hasRequiredUseSyncExternalStoreShim_production;
+function requireUseSyncExternalStoreShim_production() {
+  if (hasRequiredUseSyncExternalStoreShim_production) return useSyncExternalStoreShim_production;
+  hasRequiredUseSyncExternalStoreShim_production = 1;
+  var React2 = requireReact();
+  function is(x, y) {
+    return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+  }
+  var objectIs = "function" === typeof Object.is ? Object.is : is, useState = React2.useState, useEffect = React2.useEffect, useLayoutEffect = React2.useLayoutEffect, useDebugValue = React2.useDebugValue;
+  function useSyncExternalStore$2(subscribe2, getSnapshot) {
+    var value = getSnapshot(), _useState = useState({ inst: { value, getSnapshot } }), inst = _useState[0].inst, forceUpdate = _useState[1];
+    useLayoutEffect(
+      function() {
+        inst.value = value;
+        inst.getSnapshot = getSnapshot;
+        checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+      },
+      [subscribe2, value, getSnapshot]
+    );
+    useEffect(
+      function() {
+        checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+        return subscribe2(function() {
+          checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+        });
+      },
+      [subscribe2]
+    );
+    useDebugValue(value);
+    return value;
+  }
+  function checkIfSnapshotChanged(inst) {
+    var latestGetSnapshot = inst.getSnapshot;
+    inst = inst.value;
+    try {
+      var nextValue = latestGetSnapshot();
+      return !objectIs(inst, nextValue);
+    } catch (error) {
+      return true;
+    }
+  }
+  function useSyncExternalStore$1(subscribe2, getSnapshot) {
+    return getSnapshot();
+  }
+  var shim2 = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
+  useSyncExternalStoreShim_production.useSyncExternalStore = void 0 !== React2.useSyncExternalStore ? React2.useSyncExternalStore : shim2;
+  return useSyncExternalStoreShim_production;
+}
+var hasRequiredShim;
+function requireShim() {
+  if (hasRequiredShim) return shim.exports;
+  hasRequiredShim = 1;
+  {
+    shim.exports = requireUseSyncExternalStoreShim_production();
+  }
+  return shim.exports;
+}
 function setRef(ref, value) {
   if (typeof ref === "function") {
     return ref(value);
@@ -3471,20 +3530,52 @@ const createLucideIcon = (iconName, iconNode) => {
   Component.displayName = toPascalCase(iconName);
   return Component;
 };
-const __iconNode$k = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$k);
-const __iconNode$j = [
+const __iconNode$w = [
+  [
+    "path",
+    {
+      d: "M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2",
+      key: "169zse"
+    }
+  ]
+];
+const Activity = createLucideIcon("activity", __iconNode$w);
+const __iconNode$v = [
+  ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
+  [
+    "path",
+    {
+      d: "M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326",
+      key: "11g9vi"
+    }
+  ]
+];
+const Bell = createLucideIcon("bell", __iconNode$v);
+const __iconNode$u = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$u);
+const __iconNode$t = [
   ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
   ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
 ];
-const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$j);
-const __iconNode$i = [
+const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$t);
+const __iconNode$s = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+];
+const CircleCheck = createLucideIcon("circle-check", __iconNode$s);
+const __iconNode$r = [
   ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
   ["path", { d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3", key: "1u773s" }],
   ["path", { d: "M12 17h.01", key: "p32p05" }]
 ];
-const CircleQuestionMark = createLucideIcon("circle-question-mark", __iconNode$i);
-const __iconNode$h = [
+const CircleQuestionMark = createLucideIcon("circle-question-mark", __iconNode$r);
+const __iconNode$q = [
+  ["path", { d: "M12 15V3", key: "m9g1x1" }],
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
+  ["path", { d: "m7 10 5 5 5-5", key: "brsn70" }]
+];
+const Download = createLucideIcon("download", __iconNode$q);
+const __iconNode$p = [
   [
     "path",
     {
@@ -3502,8 +3593,14 @@ const __iconNode$h = [
   ],
   ["path", { d: "m2 2 20 20", key: "1ooewy" }]
 ];
-const EyeOff = createLucideIcon("eye-off", __iconNode$h);
-const __iconNode$g = [
+const EyeOff = createLucideIcon("eye-off", __iconNode$p);
+const __iconNode$o = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
+  ["path", { d: "M2 12h20", key: "9i4pu4" }]
+];
+const Globe = createLucideIcon("globe", __iconNode$o);
+const __iconNode$n = [
   [
     "path",
     {
@@ -3512,18 +3609,24 @@ const __iconNode$g = [
     }
   ]
 ];
-const Headphones = createLucideIcon("headphones", __iconNode$g);
-const __iconNode$f = [
+const Headphones = createLucideIcon("headphones", __iconNode$n);
+const __iconNode$m = [
   ["rect", { width: "18", height: "11", x: "3", y: "11", rx: "2", ry: "2", key: "1w4ew1" }],
   ["path", { d: "M7 11V7a5 5 0 0 1 10 0v4", key: "fwvmzm" }]
 ];
-const Lock = createLucideIcon("lock", __iconNode$f);
-const __iconNode$e = [
+const Lock = createLucideIcon("lock", __iconNode$m);
+const __iconNode$l = [
+  ["path", { d: "m10 17 5-5-5-5", key: "1bsop3" }],
+  ["path", { d: "M15 12H3", key: "6jk70r" }],
+  ["path", { d: "M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4", key: "u53s6r" }]
+];
+const LogIn = createLucideIcon("log-in", __iconNode$l);
+const __iconNode$k = [
   ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
   ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
 ];
-const Mail = createLucideIcon("mail", __iconNode$e);
-const __iconNode$d = [
+const Mail = createLucideIcon("mail", __iconNode$k);
+const __iconNode$j = [
   [
     "path",
     {
@@ -3533,14 +3636,14 @@ const __iconNode$d = [
   ],
   ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
 ];
-const MapPin = createLucideIcon("map-pin", __iconNode$d);
-const __iconNode$c = [
+const MapPin = createLucideIcon("map-pin", __iconNode$j);
+const __iconNode$i = [
   ["path", { d: "M4 5h16", key: "1tepv9" }],
   ["path", { d: "M4 12h16", key: "1lakjw" }],
   ["path", { d: "M4 19h16", key: "1djgab" }]
 ];
-const Menu = createLucideIcon("menu", __iconNode$c);
-const __iconNode$b = [
+const Menu = createLucideIcon("menu", __iconNode$i);
+const __iconNode$h = [
   [
     "path",
     {
@@ -3549,8 +3652,8 @@ const __iconNode$b = [
     }
   ]
 ];
-const MessageCircle = createLucideIcon("message-circle", __iconNode$b);
-const __iconNode$a = [
+const MessageCircle = createLucideIcon("message-circle", __iconNode$h);
+const __iconNode$g = [
   [
     "path",
     {
@@ -3559,18 +3662,18 @@ const __iconNode$a = [
     }
   ]
 ];
-const MessageSquare = createLucideIcon("message-square", __iconNode$a);
-const __iconNode$9 = [
+const MessageSquare = createLucideIcon("message-square", __iconNode$g);
+const __iconNode$f = [
   ["rect", { width: "20", height: "14", x: "2", y: "3", rx: "2", key: "48i651" }],
   ["line", { x1: "8", x2: "16", y1: "21", y2: "21", key: "1svkeh" }],
   ["line", { x1: "12", x2: "12", y1: "17", y2: "21", key: "vw1qmm" }]
 ];
-const Monitor = createLucideIcon("monitor", __iconNode$9);
-const __iconNode$8 = [
+const Monitor = createLucideIcon("monitor", __iconNode$f);
+const __iconNode$e = [
   ["polygon", { points: "3 11 22 2 13 21 11 13 3 11", key: "1ltx0t" }]
 ];
-const Navigation = createLucideIcon("navigation", __iconNode$8);
-const __iconNode$7 = [
+const Navigation = createLucideIcon("navigation", __iconNode$e);
+const __iconNode$d = [
   [
     "path",
     {
@@ -3579,8 +3682,8 @@ const __iconNode$7 = [
     }
   ]
 ];
-const Phone = createLucideIcon("phone", __iconNode$7);
-const __iconNode$6 = [
+const Phone = createLucideIcon("phone", __iconNode$d);
+const __iconNode$c = [
   [
     "path",
     {
@@ -3590,8 +3693,19 @@ const __iconNode$6 = [
   ],
   ["path", { d: "m21.854 2.147-10.94 10.939", key: "12cjpa" }]
 ];
-const Send = createLucideIcon("send", __iconNode$6);
-const __iconNode$5 = [
+const Send = createLucideIcon("send", __iconNode$c);
+const __iconNode$b = [
+  [
+    "path",
+    {
+      d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+      key: "oel41y"
+    }
+  ],
+  ["path", { d: "m9 12 2 2 4-4", key: "dzmm74" }]
+];
+const ShieldCheck = createLucideIcon("shield-check", __iconNode$b);
+const __iconNode$a = [
   [
     "path",
     {
@@ -3600,8 +3714,35 @@ const __iconNode$5 = [
     }
   ]
 ];
-const Shield = createLucideIcon("shield", __iconNode$5);
-const __iconNode$4 = [
+const Shield = createLucideIcon("shield", __iconNode$a);
+const __iconNode$9 = [
+  ["circle", { cx: "8", cy: "21", r: "1", key: "jimo8o" }],
+  ["circle", { cx: "19", cy: "21", r: "1", key: "13723u" }],
+  [
+    "path",
+    {
+      d: "M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12",
+      key: "9zh506"
+    }
+  ]
+];
+const ShoppingCart = createLucideIcon("shopping-cart", __iconNode$9);
+const __iconNode$8 = [
+  [
+    "path",
+    {
+      d: "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z",
+      key: "r04s7s"
+    }
+  ]
+];
+const Star = createLucideIcon("star", __iconNode$8);
+const __iconNode$7 = [
+  ["path", { d: "M16 7h6v6", key: "box55l" }],
+  ["path", { d: "m22 7-8.5 8.5-5-5L2 17", key: "1t1m79" }]
+];
+const TrendingUp = createLucideIcon("trending-up", __iconNode$7);
+const __iconNode$6 = [
   [
     "path",
     {
@@ -3612,7 +3753,21 @@ const __iconNode$4 = [
   ["path", { d: "M12 9v4", key: "juzpu7" }],
   ["path", { d: "M12 17h.01", key: "p32p05" }]
 ];
-const TriangleAlert = createLucideIcon("triangle-alert", __iconNode$4);
+const TriangleAlert = createLucideIcon("triangle-alert", __iconNode$6);
+const __iconNode$5 = [
+  ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
+  ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }],
+  ["line", { x1: "19", x2: "19", y1: "8", y2: "14", key: "1bvyxn" }],
+  ["line", { x1: "22", x2: "16", y1: "11", y2: "11", key: "1shjgl" }]
+];
+const UserPlus = createLucideIcon("user-plus", __iconNode$5);
+const __iconNode$4 = [
+  ["path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", key: "1yyitq" }],
+  ["path", { d: "M16 3.128a4 4 0 0 1 0 7.744", key: "16gr8j" }],
+  ["path", { d: "M22 21v-2a4 4 0 0 0-3-3.87", key: "kshegd" }],
+  ["circle", { cx: "9", cy: "7", r: "4", key: "nufk8" }]
+];
+const Users = createLucideIcon("users", __iconNode$4);
 const __iconNode$3 = [
   [
     "path",
@@ -3748,7 +3903,7 @@ function HeroSection() {
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pointer-events-none absolute top-0 right-0 h-[500px] w-[600px] rounded-full bg-primary/20 blur-[120px]" }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative mx-auto max-w-7xl px-4 sm:px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid items-center gap-12 lg:grid-cols-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center lg:text-left", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { className: "mb-6 mx-auto lg:mx-0 bg-primary/10 text-primary border border-primary/30 px-4 py-1.5 block w-fit", children: "✨ Introducing Monitor Remotely" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Badge, { className: "mb-6 mx-auto lg:mx-0 bg-primary/10 text-primary border border-primary/30 px-4 py-1.5 block w-fit", children: "✨ Introducing Mobile Spying" }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("h1", { className: "text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight mb-6", children: [
           "Keep an eye on your loved one's",
           " ",
@@ -3818,6 +3973,89 @@ function HeroSection() {
       ] }) })
     ] }) })
   ] });
+}
+function useCountUp(endValue, duration = 2e3, startAnimation) {
+  const [count2, setCount] = reactExports.useState(0);
+  reactExports.useEffect(() => {
+    if (!startAnimation) return;
+    let startTime = null;
+    let animationFrame;
+    const step = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const easeOutValue = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      setCount(Math.floor(easeOutValue * endValue));
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(step);
+      }
+    };
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [endValue, duration, startAnimation]);
+  return count2;
+}
+const StatCard = ({ stat, isVisible }) => {
+  const count2 = useCountUp(stat.value, 2500, isVisible);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center text-center space-y-3 group", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "p-3 rounded-2xl bg-background border border-primary/20 group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300 shadow-sm", children: React$1.isValidElement(stat.icon) ? React$1.cloneElement(stat.icon, {
+      className: "h-6 w-6 text-primary"
+    }) : stat.icon }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-3xl md:text-4xl font-bold text-foreground tracking-tight", children: [
+        count2.toLocaleString(),
+        stat.suffix
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-semibold text-muted-foreground uppercase tracking-widest mt-1", children: stat.label })
+    ] })
+  ] });
+};
+function StatCounter() {
+  const [isVisible, setIsVisible] = reactExports.useState(false);
+  const sectionRef = reactExports.useRef(null);
+  const stats = [
+    {
+      label: "Active Users",
+      value: 15400,
+      suffix: "+",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Users, {})
+    },
+    {
+      label: "Success Rate",
+      value: 99,
+      suffix: "%",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Zap, {})
+    },
+    {
+      label: "Countries",
+      value: 120,
+      suffix: "+",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Globe, {})
+    },
+    {
+      label: "Protection",
+      value: 24,
+      suffix: "/7",
+      icon: /* @__PURE__ */ jsxRuntimeExports.jsx(ShieldCheck, {})
+    }
+  ];
+  reactExports.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { ref: sectionRef, className: "relative mx-auto max-w-7xl px-4 sm:px-6 py-12", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative overflow-hidden rounded-3xl border border-primary/10 bg-primary/5 px-6 py-12 backdrop-blur-md sm:px-12", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pointer-events-none absolute -left-10 -top-10 h-32 w-32 bg-primary/10 blur-3xl" }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative grid grid-cols-2 gap-y-12 gap-x-4 md:grid-cols-4 md:gap-x-8", children: stats.map((stat, index) => /* @__PURE__ */ jsxRuntimeExports.jsx(StatCard, { stat, isVisible }, index)) })
+  ] }) });
 }
 const Card = reactExports.forwardRef(
   ({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -3921,11 +4159,11 @@ const features$2 = [
   }
 ];
 const liveData = [
-  "WhatsApp Messages",
-  "Instagram DMs",
-  "Call Logs",
-  "GPS Location",
-  "Snapchat Stories"
+  { label: "WhatsApp Messages", stat: "18.7k", unit: "delivered" },
+  { label: "Instagram DMs", stat: "1.6k", unit: "intercepted" },
+  { label: "Call Logs", stat: "320", unit: "incoming" },
+  { label: "GPS Location", stat: "24/7", unit: "tracking" },
+  { label: "Snapchat Stories", stat: "Live", unit: "captured" }
 ];
 function SolutionSection() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { className: "py-20 sm:py-28 bg-[#05070b]", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mx-auto max-w-7xl px-4 sm:px-6", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid items-center gap-16 lg:grid-cols-2", children: [
@@ -3953,12 +4191,16 @@ function SolutionSection() {
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "h-2 w-2 rounded-full bg-green-400" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-white font-medium", children: item })
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-white font-medium", children: item.label })
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-green-400 font-semibold", children: "Monitoring" })
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-xs text-green-400 font-bold", children: [
+                item.stat,
+                " ",
+                item.unit
+              ] })
             ]
           },
-          item
+          item.label
         )) })
       ] })
     ] })
@@ -4083,39 +4325,64 @@ function HowItWorks() {
   ] });
 }
 const testimonials = [
-  { name: "Sarah M.", text: "I was worried about my teenager's online activities. This service gave me peace of mind without invading their privacy.", rating: 5 },
-  { name: "James K.", text: "Incredibly professional and discreet. The setup was seamless and the results were exactly what I needed.", rating: 5 },
-  { name: "Linda P.", text: "I tried other services before but none worked as well as this. The customer support is outstanding.", rating: 5 },
-  { name: "Michael R.", text: "Worth every penny. I was able to protect my business from a data leak thanks to this monitoring tool.", rating: 5 },
-  { name: "Emily T.", text: "The demo convinced me right away. Everything works exactly as they described. Highly recommend!", rating: 5 },
-  { name: "David W.", text: "Fast, reliable, and completely undetectable. My kids have no idea I can see their messages.", rating: 5 },
-  { name: "Rebecca L.", text: "I was skeptical at first, but after the demo I was convinced. Best decision I've made this year.", rating: 5 },
-  { name: "Chris B.", text: "The GPS tracking feature alone is worth it. I always know where my family members are.", rating: 5 },
-  { name: "Amanda S.", text: "Setup took less than 10 minutes and I was monitoring the next day. Incredible technology.", rating: 5 },
-  { name: "Robert H.", text: "The team is very responsive and helpful. They guided me through every step of the process.", rating: 5 },
-  { name: "Jessica N.", text: "I can see everything — WhatsApp, Instagram, calls, location. It's exactly what I needed.", rating: 5 },
-  { name: "Thomas G.", text: "Discreet, professional, and effective. I recommend this service to anyone who needs peace of mind.", rating: 5 }
+  { name: "Sarah M.", text: "I was worried about my teenager's online activities. This service gave me peace of mind without invading their privacy.", rating: 5, image: "/users/Sarah.jpg" },
+  { name: "James K.", text: "Incredibly professional and discreet. The setup was seamless and the results were exactly what I needed.", rating: 4, image: "/users/james.jpg" },
+  { name: "Linda P.", text: "I tried other services before but none worked as well as this. The customer support is outstanding.", rating: 5, image: "/users/linda.jpg" },
+  { name: "Michael R.", text: "Worth every penny. I was able to protect my business from a data leak thanks to this monitoring tool.", rating: 5, image: "/users/michael.webp" },
+  { name: "Emily T.", text: "The demo convinced me right away. Everything works exactly as they described. Highly recommend!", rating: 4, image: "/users/emily.jpg" },
+  { name: "David W.", text: "Fast, reliable, and completely undetectable. My kids have no idea I can see their messages.", rating: 4, image: "/users/david.jpg" },
+  { name: "Rebecca L.", text: "I was skeptical at first, but after the demo I was convinced. Best decision I've made this year.", rating: 5, image: "/users/Rebecca.jpg" },
+  { name: "Chris B.", text: "The GPS tracking feature alone is worth it. I always know where my family members are.", rating: 5, image: "/users/chris.jpg" },
+  { name: "Amanda S.", text: "Setup took less than 10 minutes and I was monitoring the next day. Incredible technology.", rating: 5, image: "/users/amanda.jpg" },
+  { name: "Robert H.", text: "The team is very responsive and helpful. They guided me through every step of the process.", rating: 4, image: "/users/robert.jpg" },
+  { name: "Jessica N.", text: "I can see everything — WhatsApp, Instagram, calls, location. It's exactly what I needed.", rating: 5, image: "/users/jessica.jpg" },
+  { name: "Thomas G.", text: "Discreet, professional, and effective. I recommend this service to anyone who needs peace of mind.", rating: 4.5, image: "/users/thomas.jpg" }
 ];
 function TestimonialsSection() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx("section", { id: "testimonials", className: "py-20 sm:py-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { id: "testimonials", className: "py-20 sm:py-28 overflow-hidden", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("style", { children: `
+          @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-ticker-infinite {
+            display: flex;
+            width: max-content;
+            animation: ticker 40s linear infinite;
+          }
+          .animate-ticker-infinite:hover {
+            animation-play-state: paused;
+          }
+        ` }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-center mb-16", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm uppercase tracking-widest text-primary font-semibold", children: "Testimonials" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "mt-3 text-3xl sm:text-4xl md:text-4xl font-extrabold", children: "Customer Reviews" }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-gray-400 text-lg max-w-2xl mx-auto", children: "What our clients are saying about us" })
-    ] }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-6 overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex animate-ticker gap-6", children: [...testimonials.slice(6), ...testimonials.slice(6)].map((t, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-border bg-card shrink-0 w-[350px]", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-6", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-0.5 text-primary text-sm mb-3", children: Array.from({ length: t.rating }).map((_, j) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "★" }, j)) }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground italic mb-4", children: [
-        '"',
-        t.text,
-        '"'
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary", children: t.name.charAt(0) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-sm", children: t.name })
-      ] })
-    ] }) }, i)) }) })
-  ] }) });
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-background to-transparent z-10" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-background to-transparent z-10" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "animate-ticker-infinite gap-6 flex", children: [...testimonials, ...testimonials].map((t, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "border-border bg-card/50 backdrop-blur-sm shrink-0 w-[300px] sm:w-[350px]", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-6", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-0.5 text-primary text-sm mb-3", children: Array.from({ length: Math.floor(t.rating) }).map((_, j) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "★" }, j)) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground italic mb-6 min-h-[60px]", children: [
+          '"',
+          t.text,
+          '"'
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-10 w-10 rounded-full overflow-hidden border border-primary/20", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "img",
+            {
+              src: t.image,
+              alt: t.name,
+              className: "h-full w-full object-cover"
+            }
+          ) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-semibold text-sm", children: t.name })
+        ] })
+      ] }) }, i)) })
+    ] })
+  ] });
 }
 const features = [
   "All social media monitoring",
@@ -4190,7 +4457,7 @@ function BonusesSection() {
     ] }) }, b.title)) })
   ] }) });
 }
-function createContextScope(scopeName, createContextScopeDeps = []) {
+function createContextScope$1(scopeName, createContextScopeDeps = []) {
   let defaultContexts = [];
   function createContext3(rootComponentName, defaultContext) {
     const BaseContext = reactExports.createContext(defaultContext);
@@ -4225,9 +4492,9 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
     };
   };
   createScope.scopeName = scopeName;
-  return [createContext3, composeContextScopes(createScope, ...createContextScopeDeps)];
+  return [createContext3, composeContextScopes$1(createScope, ...createContextScopeDeps)];
 }
-function composeContextScopes(...scopes) {
+function composeContextScopes$1(...scopes) {
   const baseScope = scopes[0];
   if (scopes.length === 1) return baseScope;
   const createScope = () => {
@@ -4331,7 +4598,7 @@ function getElementRef$2(element) {
 }
 function createCollection(name) {
   const PROVIDER_NAME = name + "CollectionProvider";
-  const [createCollectionContext, createCollectionScope2] = createContextScope(PROVIDER_NAME);
+  const [createCollectionContext, createCollectionScope2] = createContextScope$1(PROVIDER_NAME);
   const [CollectionProviderImpl, useCollectionContext] = createCollectionContext(
     PROVIDER_NAME,
     { collectionRef: { current: null }, itemMap: /* @__PURE__ */ new Map() }
@@ -4547,7 +4814,7 @@ function getElementRef$1(element) {
   }
   return element.props.ref || element.ref;
 }
-var NODES = [
+var NODES$1 = [
   "a",
   "button",
   "div",
@@ -4566,7 +4833,7 @@ var NODES = [
   "svg",
   "ul"
 ];
-var Primitive = NODES.reduce((primitive, node) => {
+var Primitive$1 = NODES$1.reduce((primitive, node) => {
   const Slot2 = /* @__PURE__ */ createSlot(`Primitive.${node}`);
   const Node = reactExports.forwardRef((props, forwardedRef) => {
     const { asChild, ...primitiveProps } = props;
@@ -4711,7 +4978,7 @@ function useId(deterministicId) {
   return id ? `radix-${id}` : "";
 }
 var COLLAPSIBLE_NAME = "Collapsible";
-var [createCollapsibleContext, createCollapsibleScope] = createContextScope(COLLAPSIBLE_NAME);
+var [createCollapsibleContext, createCollapsibleScope] = createContextScope$1(COLLAPSIBLE_NAME);
 var [CollapsibleProvider, useCollapsibleContext] = createCollapsibleContext(COLLAPSIBLE_NAME);
 var Collapsible = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -4738,7 +5005,7 @@ var Collapsible = reactExports.forwardRef(
         open,
         onOpenToggle: reactExports.useCallback(() => setOpen((prevOpen) => !prevOpen), [setOpen]),
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Primitive.div,
+          Primitive$1.div,
           {
             "data-state": getState$1(open),
             "data-disabled": disabled ? "" : void 0,
@@ -4757,7 +5024,7 @@ var CollapsibleTrigger = reactExports.forwardRef(
     const { __scopeCollapsible, ...triggerProps } = props;
     const context = useCollapsibleContext(TRIGGER_NAME$1, __scopeCollapsible);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Primitive.button,
+      Primitive$1.button,
       {
         type: "button",
         "aria-controls": context.contentId,
@@ -4819,7 +5086,7 @@ var CollapsibleContentImpl = reactExports.forwardRef((props, forwardedRef) => {
     }
   }, [context.open, present]);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Primitive.div,
+    Primitive$1.div,
     {
       "data-state": getState$1(context.open),
       "data-disabled": context.disabled ? "" : void 0,
@@ -4839,7 +5106,7 @@ var CollapsibleContentImpl = reactExports.forwardRef((props, forwardedRef) => {
 function getState$1(open) {
   return open ? "open" : "closed";
 }
-var Root = Collapsible;
+var Root$1 = Collapsible;
 var Trigger = CollapsibleTrigger;
 var Content = CollapsibleContent;
 var DirectionContext = reactExports.createContext(void 0);
@@ -4850,7 +5117,7 @@ function useDirection(localDir) {
 var ACCORDION_NAME = "Accordion";
 var ACCORDION_KEYS = ["Home", "End", "ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"];
 var [Collection, useCollection, createCollectionScope] = createCollection(ACCORDION_NAME);
-var [createAccordionContext] = createContextScope(ACCORDION_NAME, [
+var [createAccordionContext] = createContextScope$1(ACCORDION_NAME, [
   createCollectionScope,
   createCollapsibleScope
 ]);
@@ -5009,7 +5276,7 @@ var AccordionImpl = React$1.forwardRef(
         direction: dir,
         orientation,
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(Collection.Slot, { scope: __scopeAccordion, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Primitive.div,
+          Primitive$1.div,
           {
             ...accordionProps,
             "data-orientation": orientation,
@@ -5040,7 +5307,7 @@ var AccordionItem$1 = React$1.forwardRef(
         disabled,
         triggerId,
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Root,
+          Root$1,
           {
             "data-orientation": accordionContext.orientation,
             "data-state": getState(open),
@@ -5070,7 +5337,7 @@ var AccordionHeader = React$1.forwardRef(
     const accordionContext = useAccordionContext(ACCORDION_NAME, __scopeAccordion);
     const itemContext = useAccordionItemContext(HEADER_NAME, __scopeAccordion);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Primitive.h3,
+      Primitive$1.h3,
       {
         "data-orientation": accordionContext.orientation,
         "data-state": getState(itemContext.open),
@@ -5224,6 +5491,392 @@ function FloatingWhatsApp() {
     }
   );
 }
+function createContextScope(scopeName, createContextScopeDeps = []) {
+  let defaultContexts = [];
+  function createContext3(rootComponentName, defaultContext) {
+    const BaseContext = reactExports.createContext(defaultContext);
+    BaseContext.displayName = rootComponentName + "Context";
+    const index = defaultContexts.length;
+    defaultContexts = [...defaultContexts, defaultContext];
+    const Provider = (props) => {
+      const { scope, children, ...context } = props;
+      const Context = scope?.[scopeName]?.[index] || BaseContext;
+      const value = reactExports.useMemo(() => context, Object.values(context));
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(Context.Provider, { value, children });
+    };
+    Provider.displayName = rootComponentName + "Provider";
+    function useContext2(consumerName, scope) {
+      const Context = scope?.[scopeName]?.[index] || BaseContext;
+      const context = reactExports.useContext(Context);
+      if (context) return context;
+      if (defaultContext !== void 0) return defaultContext;
+      throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
+    }
+    return [Provider, useContext2];
+  }
+  const createScope = () => {
+    const scopeContexts = defaultContexts.map((defaultContext) => {
+      return reactExports.createContext(defaultContext);
+    });
+    return function useScope(scope) {
+      const contexts = scope?.[scopeName] || scopeContexts;
+      return reactExports.useMemo(
+        () => ({ [`__scope${scopeName}`]: { ...scope, [scopeName]: contexts } }),
+        [scope, contexts]
+      );
+    };
+  };
+  createScope.scopeName = scopeName;
+  return [createContext3, composeContextScopes(createScope, ...createContextScopeDeps)];
+}
+function composeContextScopes(...scopes) {
+  const baseScope = scopes[0];
+  if (scopes.length === 1) return baseScope;
+  const createScope = () => {
+    const scopeHooks = scopes.map((createScope2) => ({
+      useScope: createScope2(),
+      scopeName: createScope2.scopeName
+    }));
+    return function useComposedScopes(overrideScopes) {
+      const nextScopes = scopeHooks.reduce((nextScopes2, { useScope, scopeName }) => {
+        const scopeProps = useScope(overrideScopes);
+        const currentScope = scopeProps[`__scope${scopeName}`];
+        return { ...nextScopes2, ...currentScope };
+      }, {});
+      return reactExports.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
+    };
+  };
+  createScope.scopeName = baseScope.scopeName;
+  return createScope;
+}
+function useCallbackRef(callback) {
+  const callbackRef = reactExports.useRef(callback);
+  reactExports.useEffect(() => {
+    callbackRef.current = callback;
+  });
+  return reactExports.useMemo(() => (...args) => callbackRef.current?.(...args), []);
+}
+var NODES = [
+  "a",
+  "button",
+  "div",
+  "form",
+  "h2",
+  "h3",
+  "img",
+  "input",
+  "label",
+  "li",
+  "nav",
+  "ol",
+  "p",
+  "select",
+  "span",
+  "svg",
+  "ul"
+];
+var Primitive = NODES.reduce((primitive, node) => {
+  const Slot2 = /* @__PURE__ */ createSlot$2(`Primitive.${node}`);
+  const Node = reactExports.forwardRef((props, forwardedRef) => {
+    const { asChild, ...primitiveProps } = props;
+    const Comp = asChild ? Slot2 : node;
+    if (typeof window !== "undefined") {
+      window[/* @__PURE__ */ Symbol.for("radix-ui")] = true;
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Comp, { ...primitiveProps, ref: forwardedRef });
+  });
+  Node.displayName = `Primitive.${node}`;
+  return { ...primitive, [node]: Node };
+}, {});
+var shimExports = requireShim();
+function useIsHydrated() {
+  return shimExports.useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false
+  );
+}
+function subscribe() {
+  return () => {
+  };
+}
+var AVATAR_NAME = "Avatar";
+var [createAvatarContext] = createContextScope(AVATAR_NAME);
+var [AvatarProvider, useAvatarContext] = createAvatarContext(AVATAR_NAME);
+var Avatar$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeAvatar, ...avatarProps } = props;
+    const [imageLoadingStatus, setImageLoadingStatus] = reactExports.useState("idle");
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      AvatarProvider,
+      {
+        scope: __scopeAvatar,
+        imageLoadingStatus,
+        onImageLoadingStatusChange: setImageLoadingStatus,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.span, { ...avatarProps, ref: forwardedRef })
+      }
+    );
+  }
+);
+Avatar$1.displayName = AVATAR_NAME;
+var IMAGE_NAME = "AvatarImage";
+var AvatarImage$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeAvatar, src, onLoadingStatusChange = () => {
+    }, ...imageProps } = props;
+    const context = useAvatarContext(IMAGE_NAME, __scopeAvatar);
+    const imageLoadingStatus = useImageLoadingStatus(src, imageProps);
+    const handleLoadingStatusChange = useCallbackRef((status) => {
+      onLoadingStatusChange(status);
+      context.onImageLoadingStatusChange(status);
+    });
+    useLayoutEffect2(() => {
+      if (imageLoadingStatus !== "idle") {
+        handleLoadingStatusChange(imageLoadingStatus);
+      }
+    }, [imageLoadingStatus, handleLoadingStatusChange]);
+    return imageLoadingStatus === "loaded" ? /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.img, { ...imageProps, ref: forwardedRef, src }) : null;
+  }
+);
+AvatarImage$1.displayName = IMAGE_NAME;
+var FALLBACK_NAME = "AvatarFallback";
+var AvatarFallback$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeAvatar, delayMs, ...fallbackProps } = props;
+    const context = useAvatarContext(FALLBACK_NAME, __scopeAvatar);
+    const [canRender, setCanRender] = reactExports.useState(delayMs === void 0);
+    reactExports.useEffect(() => {
+      if (delayMs !== void 0) {
+        const timerId = window.setTimeout(() => setCanRender(true), delayMs);
+        return () => window.clearTimeout(timerId);
+      }
+    }, [delayMs]);
+    return canRender && context.imageLoadingStatus !== "loaded" ? /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.span, { ...fallbackProps, ref: forwardedRef }) : null;
+  }
+);
+AvatarFallback$1.displayName = FALLBACK_NAME;
+function resolveLoadingStatus(image, src) {
+  if (!image) {
+    return "idle";
+  }
+  if (!src) {
+    return "error";
+  }
+  if (image.src !== src) {
+    image.src = src;
+  }
+  return image.complete && image.naturalWidth > 0 ? "loaded" : "loading";
+}
+function useImageLoadingStatus(src, { referrerPolicy, crossOrigin }) {
+  const isHydrated = useIsHydrated();
+  const imageRef = reactExports.useRef(null);
+  const image = (() => {
+    if (!isHydrated) return null;
+    if (!imageRef.current) {
+      imageRef.current = new window.Image();
+    }
+    return imageRef.current;
+  })();
+  const [loadingStatus, setLoadingStatus] = reactExports.useState(
+    () => resolveLoadingStatus(image, src)
+  );
+  useLayoutEffect2(() => {
+    setLoadingStatus(resolveLoadingStatus(image, src));
+  }, [image, src]);
+  useLayoutEffect2(() => {
+    const updateStatus = (status) => () => {
+      setLoadingStatus(status);
+    };
+    if (!image) return;
+    const handleLoad = updateStatus("loaded");
+    const handleError = updateStatus("error");
+    image.addEventListener("load", handleLoad);
+    image.addEventListener("error", handleError);
+    if (referrerPolicy) {
+      image.referrerPolicy = referrerPolicy;
+    }
+    if (typeof crossOrigin === "string") {
+      image.crossOrigin = crossOrigin;
+    }
+    return () => {
+      image.removeEventListener("load", handleLoad);
+      image.removeEventListener("error", handleError);
+    };
+  }, [image, crossOrigin, referrerPolicy]);
+  return loadingStatus;
+}
+var Root = Avatar$1;
+var Image = AvatarImage$1;
+var Fallback = AvatarFallback$1;
+const Avatar = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+  Root,
+  {
+    ref,
+    className: cn("relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full", className),
+    ...props
+  }
+));
+Avatar.displayName = Root.displayName;
+const AvatarImage = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+  Image,
+  {
+    ref,
+    className: cn("aspect-square h-full w-full", className),
+    ...props
+  }
+));
+AvatarImage.displayName = Image.displayName;
+const AvatarFallback = reactExports.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+  Fallback,
+  {
+    ref,
+    className: cn(
+      "flex h-full w-full items-center justify-center rounded-full bg-muted",
+      className
+    ),
+    ...props
+  }
+));
+AvatarFallback.displayName = Fallback.displayName;
+const names = [
+  "James W.",
+  "Sarah K.",
+  "Michael L.",
+  "Emily R.",
+  "Robert P.",
+  "David M.",
+  "Linda S.",
+  "Kevin B.",
+  "Olivia T.",
+  "Daniel H.",
+  "Sophia G.",
+  "Chris J.",
+  "Ava N.",
+  "Ethan C.",
+  "Isabella F.",
+  "Noah D.",
+  "Mia V.",
+  "Lucas Z.",
+  "Amelia Q.",
+  "Logan X."
+];
+const actions = [
+  {
+    type: "purchase",
+    message: "just purchased the Premium Plan",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(ShoppingCart, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "review",
+    message: "gave a 5-star review: 'Excellent service!'",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Star, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "purchase",
+    message: "started a new monitoring session",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(ShoppingCart, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "signup",
+    message: "just signed up for a free trial",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(UserPlus, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "activity",
+    message: "viewed live dashboard analytics",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Activity, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "upgrade",
+    message: "upgraded to Pro Plan",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(TrendingUp, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "review",
+    message: "left feedback: 'Very easy to use!'",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(MessageSquare, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "download",
+    message: "downloaded monthly report",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "login",
+    message: "logged in from a new device",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(LogIn, { className: "h-3 w-3 text-white" })
+  },
+  {
+    type: "alert",
+    message: "received a real-time alert",
+    icon: /* @__PURE__ */ jsxRuntimeExports.jsx(Bell, { className: "h-3 w-3 text-white" })
+  }
+];
+function ActivityNotification() {
+  const [notification, setNotification] = reactExports.useState(null);
+  const [isVisible, setIsVisible] = reactExports.useState(false);
+  const triggerNotification = () => {
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const randomAction = actions[Math.floor(Math.random() * actions.length)];
+    setNotification({ name: randomName, action: randomAction });
+    setIsVisible(true);
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 5e3);
+    const nextInterval = Math.floor(Math.random() * (2e4 - 1e4 + 1) + 2e4);
+    setTimeout(triggerNotification, nextInterval);
+  };
+  reactExports.useEffect(() => {
+    const timer = setTimeout(triggerNotification, 4e3);
+    return () => clearTimeout(timer);
+  }, []);
+  if (!notification) return null;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      className: `
+        fixed z-[100] w-[95%] max-w-[380px] transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
+        /* Mobile: Top Centered */
+        top-4 left-1/2 -translate-x-1/2 
+        /* Desktop: Top Right */
+        md:top-10 md:right-10 md:left-auto md:translate-x-0
+        ${isVisible ? "translate-y-0 opacity-100 scale-100" : "-translate-y-20 opacity-0 scale-95"}
+      `,
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-primary/60 to-blue-600/60 opacity-20 blur-md animate-pulse" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Card, { className: "relative overflow-hidden border-primary/20 bg-background/95 p-4 md:p-5 shadow-2xl backdrop-blur-xl", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: () => setIsVisible(false),
+              className: "absolute right-3 top-3 text-muted-foreground hover:text-foreground transition-colors p-1",
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "h-4 w-4" })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-4 md:gap-5", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-shrink-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -inset-1 rounded-full bg-primary/20 animate-ping" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Avatar, { className: "h-10 w-10 md:h-12 md:w-12 border-2 border-primary/10 relative", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AvatarFallback, { className: "bg-primary/5 text-primary font-bold text-xs md:text-sm", children: notification.name.split(" ").map((n) => n[0]).join("") }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary ring-2 ring-background", children: notification.action.icon })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mb-0.5", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-bold text-foreground truncate", children: notification.name }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(CircleCheck, { className: "h-3.5 w-3.5 text-blue-500 fill-blue-500/10 flex-shrink-0" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "hidden xs:inline-block text-[10px] font-bold text-blue-500 uppercase tracking-tighter", children: "Verified" })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs md:text-sm text-muted-foreground leading-snug line-clamp-2", children: notification.action.message }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1.5 mt-2", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-[10px] text-green-600 font-bold uppercase tracking-[0.05em]", children: "Live Activity" })
+              ] })
+            ] })
+          ] })
+        ] })
+      ]
+    }
+  );
+}
 function Footer() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("footer", { className: "border-t border-border py-8", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mx-auto max-w-7xl px-4 sm:px-6 text-center", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-sm text-muted-foreground", children: [
@@ -5240,6 +5893,7 @@ function Index() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-h-screen bg-background text-foreground", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Navbar, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(HeroSection, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(StatCounter, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(ProblemSection, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(SolutionSection, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(FeaturesSection, {}),
@@ -5250,6 +5904,7 @@ function Index() {
     /* @__PURE__ */ jsxRuntimeExports.jsx(FAQSection, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(FinalCTA, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Footer, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ActivityNotification, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(FloatingWhatsApp, {})
   ] });
 }
