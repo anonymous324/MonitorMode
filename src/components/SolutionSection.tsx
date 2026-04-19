@@ -20,10 +20,10 @@ const features = [
 ];
 
 const liveData = [
-  { label: "WhatsApp Messages", stat: "1.2k", unit: "delivered" },
-  { label: "Instagram DMs", stat: "84", unit: "intercepted" },
-  { label: "Call Logs", stat: "12", unit: "incoming" },
-  { label: "GPS Location", stat: "Active", unit: "tracking" },
+  { label: "WhatsApp Messages", stat: "18.7k", unit: "delivered" },
+  { label: "Instagram DMs", stat: "1.6k", unit: "intercepted" },
+  { label: "Call Logs", stat: "320", unit: "incoming" },
+  { label: "GPS Location", stat: "24/7", unit: "tracking" },
   { label: "Snapchat Stories", stat: "Live", unit: "captured" },
 ];
 
