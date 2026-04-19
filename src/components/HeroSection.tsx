@@ -25,7 +25,7 @@ export function HeroSection() {
           {/* LEFT CONTENT */}
           <div className="text-center lg:text-left">
             <Badge className="mb-6 mx-auto lg:mx-0 bg-primary/10 text-primary border border-primary/30 px-4 py-1.5 block w-fit">
-              ✨ Introducing Monitor Remotely
+              ✨ Introducing Mobile Spying
             </Badge>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight mb-6">

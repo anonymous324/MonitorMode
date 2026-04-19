@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
+import { StatCounter } from "@/components/StatCounter";
 import { ProblemSection } from "@/components/ProblemSection";
 import { SolutionSection } from "@/components/SolutionSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
@@ -11,6 +12,7 @@ import { BonusesSection } from "@/components/BonusesSection";
 import { FAQSection } from "@/components/FAQSection";
 import { FinalCTA } from "@/components/FinalCTA";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { ActivityNotification} from "@/components/ActivityNotification";
 import { Footer } from "@/components/Footer";
 
 export const Route = createFileRoute("/")({
@@ -30,6 +32,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <HeroSection />
+      <StatCounter />
       <ProblemSection />
       <SolutionSection />
       <FeaturesSection />
@@ -40,6 +43,7 @@ function Index() {
       <FAQSection />
       <FinalCTA />
       <Footer />
+      <ActivityNotification />
       <FloatingWhatsApp />
     </div>
   );
