@@ -24,7 +24,7 @@ export function FinalCTA() {
             </a>
           </Button>
           <Button asChild variant="outline" size="lg" className="gap-2 text-base font-bold px-8 border-primary/40 hover:bg-primary/10">
-            <a href="https://t.me/username" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/SpyAppMonitor" target="_blank" rel="noopener noreferrer">
               <Send className="h-5 w-5" />
               Chat on Telegram
             </a>
