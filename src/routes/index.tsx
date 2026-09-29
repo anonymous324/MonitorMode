@@ -15,7 +15,7 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { ActivityNotification } from "@/components/ActivityNotification";
 import { Footer } from "@/components/Footer";
 
-// Replace G-XXXXXXXXXX with your actual Google Tag ID
+// Global Measurement ID for single-property cross-domain tracking
 const GA_MEASUREMENT_ID = "G-30GY5WQW01";
 
 export const Route = createFileRoute("/")({
@@ -36,7 +36,9 @@ export const Route = createFileRoute("/")({
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_MEASUREMENT_ID}');
+          gtag('config', '${GA_MEASUREMENT_ID}', {
+            cookie_flags: 'max-age=7200;secure;samesite=none'
+          });
         `,
       },
     ],
