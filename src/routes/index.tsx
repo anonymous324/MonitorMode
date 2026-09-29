@@ -16,7 +16,7 @@ import { ActivityNotification } from "@/components/ActivityNotification";
 import { Footer } from "@/components/Footer";
 
 // Global Measurement ID for single-property cross-domain tracking
-const GA_MEASUREMENT_ID = "G-30GY5WQW01";
+const GA_MEASUREMENT_ID = "G-46YWJ2X1C0";
 
 export const Route = createFileRoute("/")({
   head: () => ({
