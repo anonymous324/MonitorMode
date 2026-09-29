@@ -1,0 +1,191 @@
+diff --git a/src/ga4.ts b/src/ga4.ts
+new file mode 100644
+index 00000000..e1c64a32
+--- /dev/null
++++ b/src/ga4.ts
+@@ -0,0 +1,119 @@
++// Multi-domain GA4 injection.
++// One Worker serves many domains; the hostname of each request decides which
++// GA4 Measurement ID (if any) gets injected into the HTML <head>.
++
++export const GA4_IDS: Record<string, string> = {
++  "925615.com": "G-XC3045LYD5",
++  "www.925615.com": "G-XC3045LYD5",
++
++  "csg-us88.com": "G-4BMXL5ENYS",
++  "www.csg-us88.com": "G-4BMXL5ENYS",
++
++  "bokepae.com": "G-C21055FY4E",
++  "www.bokepae.com": "G-C21055FY4E",
++
++  "bokeppo.com": "G-36E740ZXSG",
++  "www.bokeppo.com": "G-36E740ZXSG",
++
++  "hippodrome-us.com": "G-EL4C6Q8GBQ",
++  "www.hippodrome-us.com": "G-EL4C6Q8GBQ",
++
++  "66waji.com": "G-46YWJ2X1C0",
++  "www.66waji.com": "G-46YWJ2X1C0",
++
++  "mobilespying.com": "G-30GY5WQW01",
++  "www.mobilespying.com": "G-30GY5WQW01",
++};
++
++const GA_ID_PATTERN = /^G-[A-Z0-9]+$/;
++
++// Anything that looks like an existing GA/gtag implementation in origin HTML.
++const EXISTING_GA_SRC = /googletagmanager\.com\/gtag\/js|google-analytics\.com\/(analytics|ga)\.js/i;
++const EXISTING_GA_INLINE =
++  /googletagmanager\.com\/gtag\/js|function\s+gtag\s*\(|gtag\s*\(\s*['"](?:config|js)['"]/i;
++
++const INJECTED_MARKER = "data-ga4-injected";
++
++export function getGa4Id(hostname: string): string | null {
++  const host = hostname.toLowerCase().replace(/\.$/, "");
++  if (!Object.prototype.hasOwnProperty.call(GA4_IDS, host)) return null;
++  const id = GA4_IDS[host];
++  return GA_ID_PATTERN.test(id) ? id : null;
++}
++
++function buildSnippet(id: string): string {
++  return (
++    `<script async src="https://www.googletagmanager.com/gtag/js?id=${id}" ${INJECTED_MARKER}></script>` +
++    `<script ${INJECTED_MARKER}>` +
++    `window.dataLayer=window.dataLayer||[];` +
++    `function gtag(){dataLayer.push(arguments);}` +
++    `gtag('js',new Date());` +
++    `gtag('config','${id}');` +
++    `</script>`
++  );
++}
++
++function isHtml(response: Response): boolean {
++  const type = response.headers.get("content-type") || "";
++  return /text\/html|application\/xhtml\+xml/i.test(type);
++}
++
++export async function withGa4(request: Request, response: Response): Promise<Response> {
++  let hostname: string;
++  try {
++    hostname = new URL(request.url).hostname;
++  } catch {
++    return response;
++  }
++
++  const id = getGa4Id(hostname);
++  if (!id) return response; // unknown host: leave untouched
++  if (!isHtml(response)) return response; // only HTML
++  if (!response.body) return response; // HEAD / 204 / 304 etc.
++  if (response.status === 101) return response;
++
++  const snippet = buildSnippet(id);
++
++  const rewriter = new HTMLRewriter()
++    // Inject once, at the very start of <head>.
++    .on("head", {
++      element(el: any) {
++        el.prepend(snippet, { html: true });
++      },
++    })
++    // Strip any GA/gtag that the origin HTML already ships, so there is exactly
++    // one GA4 tag (ours) and never another domain's ID.
++    .on("script", {
++      element(el: any) {
++        const src = el.getAttribute("src");
++        if (src && EXISTING_GA_SRC.test(src)) el.remove();
++      },
++      text: makeInlineTextHandler(),
++    });
++
++  const out = rewriter.transform(response);
++  const headers = new Headers(out.headers);
++  // Body changes, so a strong validator is no longer accurate.
++  const etag = headers.get("etag");
++  if (etag && !etag.startsWith("W/")) headers.set("etag", `W/${etag}`);
++  return new Response(out.body, {
++    status: out.status,
++    statusText: out.statusText,
++    headers,
++  });
++}
++
++// Inline <script> text arrives in chunks. Buffer per script; drop it if it is a
++// GA/gtag bootstrap, otherwise re-emit it byte-for-byte.
++function makeInlineTextHandler() {
++  let buffer = "";
++  return (chunk: any) => {
++    buffer += chunk.text;
++    chunk.remove();
++    if (!chunk.lastInTextNode) return;
++    const content = buffer;
++    buffer = "";
++    if (EXISTING_GA_INLINE.test(content)) return; // drop existing GA
++    chunk.replace(content, { html: true }); // raw text inside <script>
++  };
++}
+diff --git a/src/routes/index.tsx b/src/routes/index.tsx
+index 5b554299..cf2a531b 100644
+--- a/src/routes/index.tsx
++++ b/src/routes/index.tsx
+@@ -15,9 +15,6 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+ import { ActivityNotification } from "@/components/ActivityNotification";
+ import { Footer } from "@/components/Footer";
+ 
+-// Global Measurement ID for single-property cross-domain tracking
+-const GA_MEASUREMENT_ID = "G-46YWJ2X1C0";
+-
+ export const Route = createFileRoute("/")({
+   head: () => ({
+     meta: [
+@@ -26,22 +23,6 @@ export const Route = createFileRoute("/")({
+       { property: "og:title", content: "MobileSpying — Remote Phone Monitoring" },
+       { property: "og:description", content: "Keep an eye on your loved one's phone activities without installing anything. No physical access needed." },
+     ],
+-    scripts: [
+-      {
+-        src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+-        async: true,
+-      },
+-      {
+-        children: `
+-          window.dataLayer = window.dataLayer || [];
+-          function gtag(){dataLayer.push(arguments);}
+-          gtag('js', new Date());
+-          gtag('config', '${GA_MEASUREMENT_ID}', {
+-            cookie_flags: 'max-age=7200;secure;samesite=none'
+-          });
+-        `,
+-      },
+-    ],
+   }),
+   component: Index,
+ });
+diff --git a/src/server.ts b/src/server.ts
+new file mode 100644
+index 00000000..619ca8eb
+--- /dev/null
++++ b/src/server.ts
+@@ -0,0 +1,12 @@
++import handler, { createServerEntry } from "@tanstack/react-start/server-entry";
++import { withGa4 } from "./ga4";
++
++// Wraps the normal TanStack Start server handler. The site itself is rendered
++// exactly as before; only the HTML response is post-processed to add the GA4
++// tag that belongs to the requested hostname.
++export default createServerEntry({
++  async fetch(request, ...rest) {
++    const response = await (handler.fetch as any)(request, ...rest);
++    return withGa4(request, response);
++  },
++});
+diff --git a/wrangler.jsonc b/wrangler.jsonc
+index 7cd03503..ebb5721c 100644
+--- a/wrangler.jsonc
++++ b/wrangler.jsonc
+@@ -3,5 +3,5 @@
+   "name": "tanstack-start-app",
+   "compatibility_date": "2025-09-24",
+   "compatibility_flags": ["nodejs_compat"],
+-  "main": "@tanstack/react-start/server-entry",
++  "main": "src/server.ts",
+ }

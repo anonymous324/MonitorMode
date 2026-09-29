@@ -1,4 +1,4 @@
-import { r as reactExports, f as functionalUpdate, a as arraysEqual, c as createLRUCache, i as isPromise, b as isRedirect, d as isNotFound, e as invariant, g as createControlledPromise, h as rootRouteId, j as isServer, k as compileDecodeCharMap, t as trimPath, l as rewriteBasepath, m as composeRewrites, p as processRouteTree, n as processRouteMasks, o as resolvePath, q as cleanPath, s as trimPathRight, u as parseHref, v as executeRewriteInput, w as isDangerousProtocol, x as redirect, y as findSingleMatch, z as deepEqual, D as DEFAULT_PROTOCOL_ALLOWLIST, A as interpolatePath, B as nullReplaceEqualDeep, C as replaceEqualDeep, E as last, F as decodePath, G as findFlatMatch, H as findRouteMatch, I as executeRewriteOutput, J as encodePathLikeUrl, K as trimPathLeft, L as joinPaths, M as useRouter, N as dummyMatchContext, O as matchContext, P as requireReactDom, Q as exactPathTest, R as removeTrailingSlash, S as React, T as jsxRuntimeExports, U as isModuleNotFoundError, V as useHydrated, W as escapeHtml, X as getAssetCrossOrigin, Y as resolveManifestAssetLink, Z as Outlet } from "./worker-entry-IfepYbYg.js";
+import { r as reactExports, f as functionalUpdate, a as arraysEqual, c as createLRUCache, i as isPromise, b as isRedirect, d as isNotFound, e as invariant, g as createControlledPromise, h as rootRouteId, j as isServer, k as compileDecodeCharMap, t as trimPath, l as rewriteBasepath, m as composeRewrites, p as processRouteTree, n as processRouteMasks, o as resolvePath, q as cleanPath, s as trimPathRight, u as parseHref, v as executeRewriteInput, w as isDangerousProtocol, x as redirect, y as findSingleMatch, z as deepEqual, D as DEFAULT_PROTOCOL_ALLOWLIST, A as interpolatePath, B as nullReplaceEqualDeep, C as replaceEqualDeep, E as last, F as decodePath, G as findFlatMatch, H as findRouteMatch, I as executeRewriteOutput, J as encodePathLikeUrl, K as trimPathLeft, L as joinPaths, M as useRouter, N as dummyMatchContext, O as matchContext, P as requireReactDom, Q as exactPathTest, R as removeTrailingSlash, S as React, T as jsxRuntimeExports, U as isModuleNotFoundError, V as useHydrated, W as escapeHtml, X as getAssetCrossOrigin, Y as resolveManifestAssetLink, Z as Outlet } from "./worker-entry-VcdsiIOI.js";
 import "node:events";
 import "node:async_hooks";
 import "node:stream/web";
@@ -2670,7 +2670,7 @@ function renderScripts(router, scripts, assetScripts) {
     key: `tsr-scripts-${asset.tag}-${i}`
   })) });
 }
-const appCss = "/assets/styles-BpDjDqPk.css";
+const appCss = "/assets/styles-B002LC_Y.css";
 function NotFoundComponent() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex min-h-screen items-center justify-center bg-background px-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-md text-center", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-7xl font-bold text-foreground", children: "404" }),
@@ -2723,25 +2723,7 @@ function RootShell({ children }) {
 function RootComponent() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {});
 }
-const $$splitComponentImporter = () => import("./index-CGwtOZtO.js");
-const GA_MEASUREMENT_IDS = {
-  "925615.com": "G-XC3045LYD5",
-  "www.925615.com": "G-XC3045LYD5",
-  "csg-us88.com": "G-4BMXL5ENYS",
-  "www.csg-us88.com": "G-4BMXL5ENYS",
-  "bokepae.com": "G-C21055FY4E",
-  "www.bokepae.com": "G-C21055FY4E",
-  "bokeppo.com": "G-36E740ZXSG",
-  "www.bokeppo.com": "G-36E740ZXSG",
-  "hippodrome-us.com": "G-EL4C6Q8GBQ",
-  "www.hippodrome-us.com": "G-EL4C6Q8GBQ",
-  "66waji.com": "G-46YWJ2X1C0",
-  "www.66waji.com": "G-46YWJ2X1C0",
-  "mobilespying.com": "G-30GY5WQW01",
-  "www.mobilespying.com": "G-30GY5WQW01"
-};
-const hostname = typeof window !== "undefined" ? window.location.hostname : "";
-const GA_MEASUREMENT_ID = GA_MEASUREMENT_IDS[hostname];
+const $$splitComponentImporter = () => import("./index-DDPl2Ioz.js");
 const Route2 = createFileRoute("/")({
   head: () => ({
     meta: [{
@@ -2755,18 +2737,7 @@ const Route2 = createFileRoute("/")({
     }, {
       property: "og:description",
       content: "Keep an eye on your loved one's phone activities without installing anything. No physical access needed."
-    }],
-    scripts: GA_MEASUREMENT_ID ? [{
-      src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
-      async: true
-    }, {
-      children: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${GA_MEASUREMENT_ID}');
-            `
-    }] : []
+    }]
   }),
   component: lazyRouteComponent($$splitComponentImporter, "component")
 });

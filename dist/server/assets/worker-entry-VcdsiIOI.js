@@ -16695,7 +16695,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-w2763gb3.js");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-eH9hWnor.js");
   const startManifest = tsrStartManifest();
   const rootRoute = startManifest.routes[rootRouteId] = startManifest.routes[rootRouteId] || {};
   rootRoute.assets = rootRoute.assets || [];
@@ -17297,7 +17297,7 @@ var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-DEE0IPV7.js"),
+    import("./router-BaBZMYvr.js"),
     import("./start-HYkvq4Ni.js"),
     import("./__23tanstack-start-plugin-adapters-Cwee5PKy.js")
   ]);
@@ -17585,9 +17585,9 @@ async function handleServerRoutes({ getRouter, request, url, executeRouter, cont
       for (const m2 of flattened) if (!executedRequestMiddlewares.has(m2)) routeMiddlewares.push(m2.options.server);
     }
   }
-  const server = foundRoute?.options.server;
-  if (server?.handlers && isExactMatch) {
-    const handlers = typeof server.handlers === "function" ? server.handlers({ createHandlers: (d) => d }) : server.handlers;
+  const server2 = foundRoute?.options.server;
+  if (server2?.handlers && isExactMatch) {
+    const handlers = typeof server2.handlers === "function" ? server2.handlers({ createHandlers: (d) => d }) : server2.handlers;
     const handler = handlers[request.method.toUpperCase()] ?? handlers["ANY"];
     if (handler) {
       const mayDefer = !!foundRoute.options.component;
@@ -17616,7 +17616,92 @@ function createServerEntry(entry) {
   } };
 }
 var server_default = createServerEntry({ fetch });
-const workerEntry = server_default ?? {};
+const GA4_IDS = {
+  "925615.com": "G-XC3045LYD5",
+  "www.925615.com": "G-XC3045LYD5",
+  "csg-us88.com": "G-4BMXL5ENYS",
+  "www.csg-us88.com": "G-4BMXL5ENYS",
+  "bokepae.com": "G-C21055FY4E",
+  "www.bokepae.com": "G-C21055FY4E",
+  "bokeppo.com": "G-36E740ZXSG",
+  "www.bokeppo.com": "G-36E740ZXSG",
+  "hippodrome-us.com": "G-EL4C6Q8GBQ",
+  "www.hippodrome-us.com": "G-EL4C6Q8GBQ",
+  "66waji.com": "G-46YWJ2X1C0",
+  "www.66waji.com": "G-46YWJ2X1C0",
+  "mobilespying.com": "G-30GY5WQW01",
+  "www.mobilespying.com": "G-30GY5WQW01"
+};
+const GA_ID_PATTERN = /^G-[A-Z0-9]+$/;
+const EXISTING_GA_SRC = /googletagmanager\.com\/gtag\/js|google-analytics\.com\/(analytics|ga)\.js/i;
+const EXISTING_GA_INLINE = /googletagmanager\.com\/gtag\/js|function\s+gtag\s*\(|gtag\s*\(\s*['"](?:config|js)['"]/i;
+const INJECTED_MARKER = "data-ga4-injected";
+function getGa4Id(hostname) {
+  const host = hostname.toLowerCase().replace(/\.$/, "");
+  if (!Object.prototype.hasOwnProperty.call(GA4_IDS, host)) return null;
+  const id = GA4_IDS[host];
+  return GA_ID_PATTERN.test(id) ? id : null;
+}
+function buildSnippet(id) {
+  return `<script async src="https://www.googletagmanager.com/gtag/js?id=${id}" ${INJECTED_MARKER}><\/script><script ${INJECTED_MARKER}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${id}');<\/script>`;
+}
+function isHtml(response) {
+  const type = response.headers.get("content-type") || "";
+  return /text\/html|application\/xhtml\+xml/i.test(type);
+}
+async function withGa4(request, response) {
+  let hostname;
+  try {
+    hostname = new URL(request.url).hostname;
+  } catch {
+    return response;
+  }
+  const id = getGa4Id(hostname);
+  if (!id) return response;
+  if (!isHtml(response)) return response;
+  if (!response.body) return response;
+  if (response.status === 101) return response;
+  const snippet = buildSnippet(id);
+  const rewriter = new HTMLRewriter().on("head", {
+    element(el) {
+      el.prepend(snippet, { html: true });
+    }
+  }).on("script", {
+    element(el) {
+      const src = el.getAttribute("src");
+      if (src && EXISTING_GA_SRC.test(src)) el.remove();
+    },
+    text: makeInlineTextHandler()
+  });
+  const out = rewriter.transform(response);
+  const headers = new Headers(out.headers);
+  const etag = headers.get("etag");
+  if (etag && !etag.startsWith("W/")) headers.set("etag", `W/${etag}`);
+  return new Response(out.body, {
+    status: out.status,
+    statusText: out.statusText,
+    headers
+  });
+}
+function makeInlineTextHandler() {
+  let buffer = "";
+  return (chunk) => {
+    buffer += chunk.text;
+    chunk.remove();
+    if (!chunk.lastInTextNode) return;
+    const content = buffer;
+    buffer = "";
+    if (EXISTING_GA_INLINE.test(content)) return;
+    chunk.replace(content, { html: true });
+  };
+}
+const server = createServerEntry({
+  async fetch(request, ...rest) {
+    const response = await server_default.fetch(request, ...rest);
+    return withGa4(request, response);
+  }
+});
+const workerEntry = server ?? {};
 export {
   React$1 as $,
   interpolatePath as A,
@@ -17647,8 +17732,7 @@ export {
   Outlet as Z,
   requireReact as _,
   arraysEqual as a,
-  createServerEntry as a0,
-  workerEntry as a1,
+  workerEntry as a0,
   isRedirect as b,
   createLRUCache as c,
   isNotFound as d,
