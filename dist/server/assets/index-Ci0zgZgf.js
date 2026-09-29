@@ -1,5 +1,5 @@
-import { _ as requireReact, r as reactExports, T as jsxRuntimeExports, $ as React, S as React$1 } from "./worker-entry-BLC-rW7t.js";
-import "./router-CyMZPmbp.js";
+import { _ as requireReact, r as reactExports, T as jsxRuntimeExports, $ as React, S as React$1 } from "./worker-entry-ZfYokpqP.js";
+import "./router-CRcpprwF.js";
 import "node:events";
 import "node:async_hooks";
 import "node:stream/web";
@@ -4315,7 +4315,7 @@ function HowItWorks() {
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "hidden md:block absolute top-10 left-0 right-0 h-[2px] bg-primary/20" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid md:grid-cols-3 gap-10 text-center relative", children: steps.map((s, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group flex flex-col items-center", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 z-20 \n          right-[calc(50%-40px)] \n          md:right-auto md:left-[calc(50%+30px)]", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-8 w-8 rounded-full bg-primary text-black text-xs font-bold flex items-center justify-center shadow-md", children: s.step }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute -top-3 z-20 \r\n          right-[calc(50%-40px)] \r\n          md:right-auto md:left-[calc(50%+30px)]", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-8 w-8 rounded-full bg-primary text-black text-xs font-bold flex items-center justify-center shadow-md", children: s.step }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "h-20 w-20 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md group-hover:border-primary/40 transition shadow-lg", children: /* @__PURE__ */ jsxRuntimeExports.jsx(s.icon, { className: "h-8 w-8 text-primary" }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "mt-6 text-lg font-semibold", children: s.title }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm text-muted-foreground max-w-xs", children: s.desc })
