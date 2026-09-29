@@ -44,6 +44,9 @@ export const Route = createRootRoute({
         href: appCss,
       },
     ],
+    scripts: [
+      { src: "https://app.secureprivacy.ai/script/6abb276a181cc3c6671b7f7f.js" },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
