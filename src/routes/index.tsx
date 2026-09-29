@@ -16,7 +16,7 @@ import { ActivityNotification } from "@/components/ActivityNotification";
 import { Footer } from "@/components/Footer";
 
 // Replace G-XXXXXXXXXX with your actual Google Tag ID
-const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+const GA_MEASUREMENT_ID = "G-30GY5WQW01";
 
 export const Route = createFileRoute("/")({
   head: () => ({
