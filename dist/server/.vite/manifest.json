@@ -9,8 +9,8 @@
     "file": "assets/styles-B002LC_Y.css",
     "src": "C:/Users/sudha/OneDrive/Desktop/Finalize/MonitorMode/src/styles.css"
   },
-  "_worker-entry-Cm5EJktD.js": {
-    "file": "assets/worker-entry-Cm5EJktD.js",
+  "_worker-entry-C5ijoocO.js": {
+    "file": "assets/worker-entry-C5ijoocO.js",
     "name": "worker-entry",
     "dynamicImports": [
       "tanstack-start-manifest:v",
@@ -26,12 +26,12 @@
     "isDynamicEntry": true
   },
   "src/router.tsx": {
-    "file": "assets/router-DgEWQUFl.js",
+    "file": "assets/router-BIEiViso.js",
     "name": "router",
     "src": "src/router.tsx",
     "isDynamicEntry": true,
     "imports": [
-      "_worker-entry-Cm5EJktD.js"
+      "_worker-entry-C5ijoocO.js"
     ],
     "dynamicImports": [
       "src/routes/index.tsx?tsr-split=component"
@@ -41,12 +41,12 @@
     ]
   },
   "src/routes/index.tsx?tsr-split=component": {
-    "file": "assets/index-DwfidyG5.js",
+    "file": "assets/index-BnSOp_PZ.js",
     "name": "index",
     "src": "src/routes/index.tsx?tsr-split=component",
     "isDynamicEntry": true,
     "imports": [
-      "_worker-entry-Cm5EJktD.js",
+      "_worker-entry-C5ijoocO.js",
       "src/router.tsx"
     ]
   },
@@ -62,7 +62,7 @@
     "src": "virtual:cloudflare/worker-entry",
     "isEntry": true,
     "imports": [
-      "_worker-entry-Cm5EJktD.js"
+      "_worker-entry-C5ijoocO.js"
     ]
   }
 }
