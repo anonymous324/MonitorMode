@@ -17297,7 +17297,7 @@ var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-CB-LxCiz.js"),
+    import("./router-DuQyALow.js"),
     import("./start-HYkvq4Ni.js"),
     import("./__23tanstack-start-plugin-adapters-Cwee5PKy.js")
   ]);
@@ -17619,8 +17619,8 @@ var server_default = createServerEntry({ fetch });
 const GA4_IDS = {
   "925615.com": "G-RVMJVNNSE5",
   "www.925615.com": "G-RVMJVNNSE5",
-  "csg-us88.com": "G-HVVJ6YNS8Z",
-  "www.csg-us88.com": "G-HVVJ6YNS8Z",
+  "csg-us88.com": "G-YDCH9RT5BF",
+  "www.csg-us88.com": "G-YDCH9RT5BF",
   "bokepae.com": "G-5HZHG4CRB9",
   "www.bokepae.com": "G-5HZHG4CRB9",
   "bokeppo.com": "G-PXPL6TYTVX",
