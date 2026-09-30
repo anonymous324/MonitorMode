@@ -12,8 +12,8 @@ export const GA4_IDS: Record<string, string> = {
   "bokepae.com": "G-D0SZX31G5K",
   "www.bokepae.com": "G-D0SZX31G5K",
 
-  "bokeppo.com": "G-PXPL6TYTVX",
-  "www.bokeppo.com": "G-PXPL6TYTVX",
+  "bokeppo.com": "G-QJKP02VK9J",
+  "www.bokeppo.com": "G-QJKP02VK9J",
 
   "hippodrome-us.com": "G-3TKEJSZMJM",
   "www.hippodrome-us.com": "G-3TKEJSZMJM",
