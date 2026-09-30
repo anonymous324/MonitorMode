@@ -17297,7 +17297,7 @@ var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-DQNpoHXf.js"),
+    import("./router-C4QiiS6A.js"),
     import("./start-HYkvq4Ni.js"),
     import("./__23tanstack-start-plugin-adapters-Cwee5PKy.js")
   ]);
@@ -17629,8 +17629,8 @@ const GA4_IDS = {
   "www.hippodrome-us.com": "G-69WTVRCR87",
   "66waji.com": "G-9SZNKXEENP",
   "www.66waji.com": "G-9SZNKXEENP",
-  "mobilespying.com": "G-H38K8X957D",
-  "www.mobilespying.com": "G-H38K8X957D"
+  "mobilespying.com": "G-DT3JK5FHFP",
+  "www.mobilespying.com": "G-DT3JK5FHFP"
 };
 const GA_ID_PATTERN = /^G-[A-Z0-9]+$/;
 const EXISTING_GA_SRC = /googletagmanager\.com\/gtag\/js|google-analytics\.com\/(analytics|ga)\.js/i;

@@ -21,8 +21,8 @@ export const GA4_IDS: Record<string, string> = {
   "66waji.com": "G-9SZNKXEENP",
   "www.66waji.com": "G-9SZNKXEENP",
 
-  "mobilespying.com": "G-H38K8X957D",
-  "www.mobilespying.com": "G-H38K8X957D",
+  "mobilespying.com": "G-DT3JK5FHFP",
+  "www.mobilespying.com": "G-DT3JK5FHFP",
 };
 
 const GA_ID_PATTERN = /^G-[A-Z0-9]+$/;
