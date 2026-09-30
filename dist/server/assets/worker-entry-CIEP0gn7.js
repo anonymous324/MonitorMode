@@ -16695,7 +16695,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-BVxzoePw.js");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-DU_hOCI1.js");
   const startManifest = tsrStartManifest();
   const rootRoute = startManifest.routes[rootRouteId] = startManifest.routes[rootRouteId] || {};
   rootRoute.assets = rootRoute.assets || [];
@@ -17297,7 +17297,7 @@ var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-DuQyALow.js"),
+    import("./router-Dt7ATuWc.js"),
     import("./start-HYkvq4Ni.js"),
     import("./__23tanstack-start-plugin-adapters-Cwee5PKy.js")
   ]);
@@ -17621,8 +17621,8 @@ const GA4_IDS = {
   "www.925615.com": "G-RVMJVNNSE5",
   "csg-us88.com": "G-YDCH9RT5BF",
   "www.csg-us88.com": "G-YDCH9RT5BF",
-  "bokepae.com": "G-5HZHG4CRB9",
-  "www.bokepae.com": "G-5HZHG4CRB9",
+  "bokepae.com": "G-D0SZX31G5K",
+  "www.bokepae.com": "G-D0SZX31G5K",
   "bokeppo.com": "G-PXPL6TYTVX",
   "www.bokeppo.com": "G-PXPL6TYTVX",
   "hippodrome-us.com": "G-3TKEJSZMJM",

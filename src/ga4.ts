@@ -9,8 +9,8 @@ export const GA4_IDS: Record<string, string> = {
   "csg-us88.com": "G-YDCH9RT5BF",
   "www.csg-us88.com": "G-YDCH9RT5BF",
 
-  "bokepae.com": "G-5HZHG4CRB9",
-  "www.bokepae.com": "G-5HZHG4CRB9",
+  "bokepae.com": "G-D0SZX31G5K",
+  "www.bokepae.com": "G-D0SZX31G5K",
 
   "bokeppo.com": "G-PXPL6TYTVX",
   "www.bokeppo.com": "G-PXPL6TYTVX",
