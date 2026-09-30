@@ -3,26 +3,26 @@
 // GA4 Measurement ID (if any) gets injected into the HTML <head>.
 
 export const GA4_IDS: Record<string, string> = {
-  "925615.com": "G-XC3045LYD5",
-  "www.925615.com": "G-XC3045LYD5",
+  "925615.com": "G-RVMJVNNSE5",
+  "www.925615.com": "G-RVMJVNNSE5",
 
-  "csg-us88.com": "G-4BMXL5ENYS",
-  "www.csg-us88.com": "G-4BMXL5ENYS",
+  "csg-us88.com": "G-HVVJ6YNS8Z",
+  "www.csg-us88.com": "G-HVVJ6YNS8Z",
 
-  "bokepae.com": "G-C21055FY4E",
-  "www.bokepae.com": "G-C21055FY4E",
+  "bokepae.com": "G-5HZHG4CRB9",
+  "www.bokepae.com": "G-5HZHG4CRB9",
 
-  "bokeppo.com": "G-36E740ZXSG",
-  "www.bokeppo.com": "G-36E740ZXSG",
+  "bokeppo.com": "G-PXPL6TYTVX",
+  "www.bokeppo.com": "G-PXPL6TYTVX",
 
-  "hippodrome-us.com": "G-EL4C6Q8GBQ",
-  "www.hippodrome-us.com": "G-EL4C6Q8GBQ",
+  "hippodrome-us.com": "G-3TKEJSZMJM",
+  "www.hippodrome-us.com": "G-3TKEJSZMJM",
 
-  "66waji.com": "G-46YWJ2X1C0",
-  "www.66waji.com": "G-46YWJ2X1C0",
+  "66waji.com": "G-64FZZGM9ZQ",
+  "www.66waji.com": "G-64FZZGM9ZQ",
 
-  "mobilespying.com": "G-30GY5WQW01",
-  "www.mobilespying.com": "G-30GY5WQW01",
+  "mobilespying.com": "G-H38K8X957D",
+  "www.mobilespying.com": "G-H38K8X957D",
 };
 
 const GA_ID_PATTERN = /^G-[A-Z0-9]+$/;

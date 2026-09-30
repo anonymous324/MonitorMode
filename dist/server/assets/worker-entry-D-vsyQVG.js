@@ -16695,7 +16695,7 @@ function getResponse() {
 }
 var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 async function getStartManifest(matchedRoutes) {
-  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-DU_hOCI1.js");
+  const { tsrStartManifest } = await import("./_tanstack-start-manifest_v-BVxzoePw.js");
   const startManifest = tsrStartManifest();
   const rootRoute = startManifest.routes[rootRouteId] = startManifest.routes[rootRouteId] || {};
   rootRoute.assets = rootRoute.assets || [];
@@ -17297,7 +17297,7 @@ var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-BCoT1D08.js"),
+    import("./router-CB-LxCiz.js"),
     import("./start-HYkvq4Ni.js"),
     import("./__23tanstack-start-plugin-adapters-Cwee5PKy.js")
   ]);
@@ -17617,20 +17617,20 @@ function createServerEntry(entry) {
 }
 var server_default = createServerEntry({ fetch });
 const GA4_IDS = {
-  "925615.com": "G-XC3045LYD5",
-  "www.925615.com": "G-XC3045LYD5",
-  "csg-us88.com": "G-4BMXL5ENYS",
-  "www.csg-us88.com": "G-4BMXL5ENYS",
-  "bokepae.com": "G-C21055FY4E",
-  "www.bokepae.com": "G-C21055FY4E",
-  "bokeppo.com": "G-36E740ZXSG",
-  "www.bokeppo.com": "G-36E740ZXSG",
-  "hippodrome-us.com": "G-EL4C6Q8GBQ",
-  "www.hippodrome-us.com": "G-EL4C6Q8GBQ",
-  "66waji.com": "G-46YWJ2X1C0",
-  "www.66waji.com": "G-46YWJ2X1C0",
-  "mobilespying.com": "G-30GY5WQW01",
-  "www.mobilespying.com": "G-30GY5WQW01"
+  "925615.com": "G-RVMJVNNSE5",
+  "www.925615.com": "G-RVMJVNNSE5",
+  "csg-us88.com": "G-HVVJ6YNS8Z",
+  "www.csg-us88.com": "G-HVVJ6YNS8Z",
+  "bokepae.com": "G-5HZHG4CRB9",
+  "www.bokepae.com": "G-5HZHG4CRB9",
+  "bokeppo.com": "G-PXPL6TYTVX",
+  "www.bokeppo.com": "G-PXPL6TYTVX",
+  "hippodrome-us.com": "G-3TKEJSZMJM",
+  "www.hippodrome-us.com": "G-3TKEJSZMJM",
+  "66waji.com": "G-64FZZGM9ZQ",
+  "www.66waji.com": "G-64FZZGM9ZQ",
+  "mobilespying.com": "G-H38K8X957D",
+  "www.mobilespying.com": "G-H38K8X957D"
 };
 const GA_ID_PATTERN = /^G-[A-Z0-9]+$/;
 const EXISTING_GA_SRC = /googletagmanager\.com\/gtag\/js|google-analytics\.com\/(analytics|ga)\.js/i;
