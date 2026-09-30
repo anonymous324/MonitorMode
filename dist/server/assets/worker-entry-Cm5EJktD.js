@@ -17297,7 +17297,7 @@ var baseManifestPromise;
 var cachedFinalManifestPromise;
 async function loadEntries() {
   const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-    import("./router-Byy0oi9w.js"),
+    import("./router-DgEWQUFl.js"),
     import("./start-HYkvq4Ni.js"),
     import("./__23tanstack-start-plugin-adapters-Cwee5PKy.js")
   ]);
@@ -17625,8 +17625,8 @@ const GA4_IDS = {
   "www.bokepae.com": "G-D0SZX31G5K",
   "bokeppo.com": "G-QJKP02VK9J",
   "www.bokeppo.com": "G-QJKP02VK9J",
-  "hippodrome-us.com": "G-3TKEJSZMJM",
-  "www.hippodrome-us.com": "G-3TKEJSZMJM",
+  "hippodrome-us.com": "G-69WTVRCR87",
+  "www.hippodrome-us.com": "G-69WTVRCR87",
   "66waji.com": "G-64FZZGM9ZQ",
   "www.66waji.com": "G-64FZZGM9ZQ",
   "mobilespying.com": "G-H38K8X957D",
